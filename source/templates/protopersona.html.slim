@@ -1,0 +1,59 @@
+.wrap
+  h1.page__title.space--both-3 Proto-persona
+
+  .proto
+    .grid
+      .grid__item.width-5-12
+
+        .proto__box
+          .milli.space--bottom-3 A cura di #{persona.author}
+
+          = image_tag persona.avatar.file.width(350).format('pjpg').to_url if persona.avatar.present?
+
+          h1.alpha = persona.full_name
+          = persona.role.role
+
+      .grid__item.width-7-12
+        .proto__box
+          .formatted-content
+            h3 Fattori demografici
+            = persona.demographic_info
+
+            h3 Ipotesi in cui è coinvolto
+            - hyps = dato.hypotesies.select{|a| a.personas.include?(persona.role)}
+            ul
+              - hyps.each do |h|
+                li = link_to h.name, "/hypothesis/#{h.id}"
+
+
+    .grid.space--top-3
+      .grid__item.width-4-12
+        .proto__box
+          .formatted-content
+            h3 Scenario
+            = persona.scenario
+
+        .formatted-content
+          h3 Desideri
+        .board
+          - persona.desires.each do |d|
+            .post-it
+              = d.name
+
+      .grid__item.width-4-12
+        .proto__box.formatted-content
+          h3 Bisogni
+
+        .board
+          - persona.needs.each do |n|
+            .post-it
+              = n.name
+
+      .grid__item.width-4-12
+        .proto__box.formatted-content
+          h3 Problemi
+
+        .board
+          - persona.problems.each do |p|
+            .post-it.post-it--red
+              = p.name

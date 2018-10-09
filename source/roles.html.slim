@@ -1,0 +1,33 @@
+h1.page__title Personas
+
+.board
+  - dato.personas.each do |persona|
+      .post-it
+        .post-it__body
+          = persona.role
+          .smallprint
+            = persona.description
+
+            - hyps = dato.hypotesies.select{|a| a.personas.include?(persona)}
+            - protos = dato.protopersonas.select{|a| a.role == persona}
+
+            - if protos.any?
+              .formatted-content.space--top-2
+                ul
+                  - protos.each do |p|
+                    li = link_to p.full_name, "/protopersona/#{p.id}"
+
+        .post-it__footer
+          .post-it__info
+            - if hyps.count > 0
+              .tooltip
+                p #{hyps.count} ipotesi
+                .tooltip__content
+                  ul
+                    - hyps.each do |h|
+                      li = h.name
+            - else
+              p Nessuna ipotesi
+
+
+

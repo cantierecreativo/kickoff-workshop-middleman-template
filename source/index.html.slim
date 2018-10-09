@@ -1,0 +1,23 @@
+
+.grid--narrow
+  .grid__item.desk-5-12
+    .formatted-content
+      h1 Incipit
+      = dato.info.resume
+
+  .grid__item.desk-2-12
+  .grid__item.desk-5-12
+    h3.delta Realizzato il #{dato.info.date}
+
+    .formatted-content
+      = dato.info.participants
+
+    .space--top-3
+      h3.beta Stats:
+
+      ul
+        li = link_to "#{dato.goals.count} Obiettivi", "/goals"
+        li = link_to "#{dato.problems.count} Problemi", "/problems"
+        li = link_to  "#{dato.personas.count} Profili personas", "/roles"
+        li #{dato.protopersonas.count} Proto-personas
+        li = link_to "#{dato.hypotesies.count} Ipotesi", "/hypothesy"

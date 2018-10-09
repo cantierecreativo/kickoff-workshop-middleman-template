@@ -1,0 +1,32 @@
+.wrap
+  .space--both-3
+    p: strong Fattore di rischio: #{hypothesis.risk_factor} su 5
+    h1.page__title Ipotesi #{hypothesis.name}
+
+  .alpha.space--top-2 Otterremo (obiettivi e problemi)
+  .board
+    - hypothesis.goals.each do |card|
+      = partial "partials/post-it", locals:{obj: card, show_hypotesy: true}
+
+  .alpha.space--top-2 Se queste persone
+  .board
+    - hypothesis.personas.each do |persona|
+      .post-it
+        = persona.role
+        .smallprint
+          = persona.description
+
+  .alpha.space--top-2 Soddisferanno bisogni e problemi
+  .board
+    - hypothesis.outcomes.each do |card|
+      = partial "partials/post-it", locals:{obj: card, hide_rating: true}
+
+  .alpha.space--top-2 Attraverso queste soluzioni
+  .board
+    - hypothesis.solutions.each do |card|
+      = partial "partials/post-it", locals:{obj: card, hide_rating: true, show_hypotesy: true}
+
+  .alpha.space--top-2 KPI
+  .board
+    .formatted-content
+      = hypothesis.kpi

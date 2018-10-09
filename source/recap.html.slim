@@ -1,0 +1,22 @@
+h1.page__title Recap obiettivi e problemi
+
+- dato.groups.values.each do |group|
+
+  - problems    = dato.problems.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
+  - goals       = dato.goals.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
+
+  h2.beta.space--top-3
+    = group.name
+
+  .grid
+    .grid__item.desk-6-12
+      h3.gamma.space-top-2 Obiettivi
+      .board
+        - goals.each do |card|
+          = partial "partials/post-it", locals:{obj: card, show_hypotesy: true}
+    .grid__item.desk-6-12
+      h3.gamma.space-top-2 Problemi
+      .board
+        - problems.each do |card|
+          = partial "partials/post-it", locals:{obj: card, show_hypotesy: true, color: "red"}
+
