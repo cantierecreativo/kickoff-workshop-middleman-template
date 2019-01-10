@@ -1,5 +1,6 @@
 .canvas
   position: relative
+  min-height: 100vh
 
   &.is-shifted
     +position(absolute, 0px 0px 0px 0px)
@@ -22,6 +23,3 @@
     box-shadow: 3px 0 5px rgba(#000, 0.2)
 
 +canvas-layout(290px)
-
-+at-breakpoint(lap)
-  +canvas-layout(400px)

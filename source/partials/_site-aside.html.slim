@@ -1,0 +1,35 @@
+nav.site-aside
+  header.site-aside__header
+    .flag
+      .flag__image
+        = image_tag "http://fakeimg.pl/30x30",
+          class: ""
+
+      .flag__body
+        = "#{dato.info.client} Kickoff"
+
+  section
+    ul.site-aside__nav
+      li.nav__item
+        = link_to "Dashboard",
+          "/"
+
+      li.nav__item
+        = link_to "Recap",
+          "/recap"
+
+      li.nav__item
+        = link_to "Ipotesi",
+          "/hypothesy"
+
+      li.nav__item
+        = link_to "Personas",
+          "/roles"
+
+      li.nav__item
+        = link_to "Obiettivi",
+          "/goals"
+
+      li.nav__item
+        = link_to "Problemi",
+          "/problems"

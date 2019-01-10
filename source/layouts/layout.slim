@@ -2,24 +2,17 @@ doctype 5
 html lang=I18n.locale
   head = partial "partials/head"
   body
-    = inline_svg("sprite.svg", class: "svg-inliner")
-    .svg-inliner= partial "fonts/svg/sprite.svg"
+    .canvas
+      aside.canvas__aside
+        = partial "partials/site-aside"
 
-    .header.space--both-1
-      h1.alpha Kickoff workshop #{dato.info.client}
-
-      ul.nav--dots
-        li.nav__item = link_to "Home", "/"
-        li.nav__item = link_to "Recap", "/recap"
-        li.nav__item = link_to "Ipotesi", "/hypothesy"
-        li.nav__item = link_to "Personas", "/roles"
-        li.nav__item = link_to "Obiettivi", "/goals"
-        li.nav__item = link_to "Problemi", "/problems"
+      main.canvas__main
+        .wrap--width-full
+          = yield
 
 
-
-    = yield
-
-    .space--top-5 = partial "partials/footer"
+    /.space--top-5 = partial "partials/footer"
     = partial "partials/js_includes"
 
+    = inline_svg("sprite.svg", class: "svg-inliner")
+    .svg-inliner= partial "fonts/svg/sprite.svg"
