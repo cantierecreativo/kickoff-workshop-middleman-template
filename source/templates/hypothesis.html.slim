@@ -1,32 +1,64 @@
-.wrap
-  .space--both-3
-    p: strong Fattore di rischio: #{hypothesis.risk_factor} su 5
-    h1.page__title Ipotesi #{hypothesis.name}
+- bg_image = hyp.cover.url(w: 1900, h: 800, fit: "crop", fm: "pjpg")
 
-  .alpha.space--top-2 Otterremo (obiettivi e problemi)
-  .board
-    - hypothesis.goals.each do |card|
-      = partial "partials/post-it", locals:{obj: card, show_hypotesy: true}
+header.image-cover
+  .image-cover__background style="background-image: url('#{bg_image}');"
+  .image-cover__heading
+    .image-cover__number
+      = hyp.position
 
-  .alpha.space--top-2 Se queste persone
-  .board
-    - hypothesis.personas.each do |persona|
-      .post-it
-        = persona.role
-        .smallprint
-          = persona.description
+    h1.image-cover__title
+      = hyp.name
 
-  .alpha.space--top-2 Soddisferanno bisogni e problemi
-  .board
-    - hypothesis.outcomes.each do |card|
-      = partial "partials/post-it", locals:{obj: card, hide_rating: true}
+    .image-cover__text
+      = hyp.abstract
 
-  .alpha.space--top-2 Attraverso queste soluzioni
-  .board
-    - hypothesis.solutions.each do |card|
-      = partial "partials/post-it", locals:{obj: card, hide_rating: true, show_hypotesy: true}
+section.space--both-2
+  .wrap--width-full.wrap--double-gutter
+    h2.space--bottom-1.gamma
+      = "Noi crediamo che"
 
-  .alpha.space--top-2 KPI
+    .grid
+      .grid__item.desk-3-12
+        h3.space--bottom-1.delta
+          = "Otterremo"
+
+        ul
+          - hyp.goals.each do |goal|
+            li.space--bottom-1
+              = partial "partials/goal-preview",
+                locals: {goal: goal}
+
+      .grid__item.desk-3-12
+        h3.space--bottom-1.delta
+          = "Se"
+
+        ul
+          - hyp.personas.each do |persona|
+            li.space--bottom-1
+              = partial "partials/persona-role-preview",
+                locals: {persona_role: persona_role}
+
+      .grid__item.desk-3-12
+        h3.space--bottom-1.delta
+          = "Soddisfa"
+
+        ul
+          - hyp.outcomes.each do |outcome|
+            li.space--bottom-1
+              = partial "partials/outcome-preview",
+                locals: {outcome: outcome}
+
+      .grid__item.desk-3-12
+        h3.space--bottom-1.delta
+          = "Tramite"
+
+        ul
+          - hyp.solutions.each do |solution|
+            li.space--bottom-1
+              = partial "partials/solution-preview",
+                locals: {solution: solution}
+
+  h2.alpha.space--top-2 KPI
   .board
     .formatted-content
-      = hypothesis.kpi
+      = hyp.kpi

@@ -1,13 +1,21 @@
-h1.page__title Tabella delle ipotesi
+.wrap--width-full.wrap--double-gutter
+  h1.alpha.space--both-1.font-weight--light Ipotesi
 
+  .grid
+    - dato.hypotesies.sort_by(&:position).each do |hyp|
+      .grid__item.lap-6-12.desk-4-12.wall-3-12
+        .space--bottom-2
+          = partial "partials/hypothesis-preview",
+            locals: {hyp: hyp}
 
-table.table.hypotesy
+/table.table.hypotesy
   thead
     th Nome
     th Otterremo (Obiettivi e risoluzione problemi)
     th Se (Protopersonas)
     th Soddisfa (Bisogni e problemi)
     th Tramite (soluzioni)
+
   tbody
     - dato.hypotesies.sort_by(&:position).each_with_index do |hyp, i|
       tr

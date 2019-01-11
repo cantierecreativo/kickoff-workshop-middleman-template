@@ -7,9 +7,7 @@ html lang=I18n.locale
         = partial "partials/site-aside"
 
       main.canvas__main
-        .wrap--width-full
-          = yield
-
+        = yield
 
     /.space--top-5 = partial "partials/footer"
     = partial "partials/js_includes"

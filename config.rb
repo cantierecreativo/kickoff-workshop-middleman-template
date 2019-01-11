@@ -54,20 +54,19 @@ end
 
 proxy "/_redirects", "/templates/redirects.txt"
 
-
 dato.tap do |dato|
+  proxy "/ipotesi/index.html",
+    "/templates/hypothesis_index.html"
+
   dato.protopersonas.each do |proto|
-    proxy(
-      "/protopersona/#{proto.id}/index.html",
+    proxy "/proto-personas/#{proto.slug}/index.html",
       '/templates/protopersona.html',
       locals: { persona: proto }
-    )
   end
+
   dato.hypotesies.each do |hyp|
-    proxy(
-      "/hypothesis/#{hyp.id}/index.html",
+    proxy "/ipotesi/#{hyp.slug}/index.html",
       '/templates/hypothesis.html',
-      locals: { hypothesis: hyp }
-    )
+      locals: { hyp: hyp }
   end
 end

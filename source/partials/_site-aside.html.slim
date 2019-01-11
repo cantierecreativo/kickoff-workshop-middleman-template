@@ -1,35 +1,33 @@
 nav.site-aside
-  header.site-aside__header
-    .flag
-      .flag__image
-        = image_tag "http://fakeimg.pl/30x30",
-          class: ""
+  section.site-aside__top
+    header.site-aside__header
+      .flag.space--bottom-2
+        .flag__image
+          = image_tag "http://fakeimg.pl/30x30",
+            class: ""
 
-      .flag__body
-        = "#{dato.info.client} Kickoff"
+        .flag__body
+          .site-aside__header__title
+            = "#{dato.info.client} Kickoff"
 
-  section
-    ul.site-aside__nav
-      li.nav__item
-        = link_to "Dashboard",
-          "/"
+      = "Benvenuto,<br> Marco."
 
-      li.nav__item
-        = link_to "Recap",
-          "/recap"
+    = partial "partials/main-nav",
+      locals: {block_class: "vertical-nav"}
 
-      li.nav__item
-        = link_to "Ipotesi",
-          "/hypothesy"
+  section.site-aside__bottom
+    .padding--2.border.border-radius.align--center
+      figure.space--bottom-1
+        = image_tag "http://fakeimg.pl/50x50",
+          class: "border-radius--circle"
 
-      li.nav__item
-        = link_to "Personas",
-          "/roles"
+      .space--bottom-1
+        = "Il tuo referente è"
 
-      li.nav__item
-        = link_to "Obiettivi",
-          "/goals"
+      .space--bottom-1.font-weight--bold
+        = "Amir"
 
-      li.nav__item
-        = link_to "Problemi",
-          "/problems"
+      .space-bottom-1.color--light
+        = "Boss of UX"
+        br
+        = "@ Cantiere Creativo"
