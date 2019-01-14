@@ -1,0 +1,45 @@
+.wrap--width-full.wrap--double-gutter
+  h1.page-title Personas
+
+  section.space--bottom-2
+    - dato.personas.each do |persona|
+      .inline--block.space--right-1.space--top-1
+        = partial "partials/persona-preview",
+          locals: {persona: persona}
+
+  section.space--both-2
+    .grid
+      - dato.protopersonas.each do |pp|
+        .grid__item.desk-6-12
+          .space--bottom-2
+            = partial "partials/proto-persona-preview",
+            locals: {pp: pp}
+
+  /.board
+    - dato.personas.each do |persona|
+        .post-it
+          .post-it__body
+            = persona.name
+            .smallprint
+              = persona.description
+
+              - hyps = dato.hypotesies.select{|a| a.personas.include?(persona)}
+              - protos = dato.protopersonas.select{|a| a.role == persona}
+
+              - if protos.any?
+                .formatted-content.space--top-2
+                  ul
+                    - protos.each do |p|
+                      li = link_to p.full_name, "/protopersona/#{p.id}"
+
+          .post-it__footer
+            .post-it__info
+              - if hyps.count > 0
+                .tooltip
+                  p #{hyps.count} ipotesi
+                  .tooltip__content
+                    ul
+                      - hyps.each do |h|
+                        li = h.name
+              - else
+                p Nessuna ipotesi

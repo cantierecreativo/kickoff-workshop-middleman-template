@@ -1,4 +1,4 @@
-.wrap
+.wrap--width-full.wrap--double-gutter
   h1.page__title.space--both-3 Proto-persona
 
   .proto
@@ -11,7 +11,7 @@
           = image_tag persona.avatar.file.width(350).format('pjpg').to_url if persona.avatar.present?
 
           h1.alpha = persona.full_name
-          = persona.role.role
+          = persona.role.name
 
       .grid__item.width-7-12
         .proto__box

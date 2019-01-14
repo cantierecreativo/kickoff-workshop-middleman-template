@@ -1,0 +1,45 @@
+dl
+  - if pp.job.present?
+    div
+      dt.inline
+        => icon("user-md")
+        strong=> "Lavoro:"
+
+      dd.inline
+        = pp.job
+
+  - if pp.age.present?
+    div
+      dt.inline
+        => icon("birthday-cake")
+        strong=> "Età:"
+
+      dd.inline
+        = pp.age
+
+  - if pp.annual_income.present?
+    div
+      dt.inline
+        => icon("dollar-sign")
+        strong=> "Fascia di reddito:"
+
+      dd.inline
+        = pp.annual_income
+
+  - if pp.family_details.present?
+    div
+      dt.inline
+        => icon("users-class")
+        strong=> "Famiglia:"
+
+      dd.inline
+        =< pp.family_details
+
+  - if pp.hometown.present?
+    div
+      dt.inline
+        => icon("city")
+        strong=> "Provenienza:"
+
+      dd.inline
+        = pp.hometown

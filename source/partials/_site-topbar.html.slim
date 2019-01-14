@@ -1,0 +1,19 @@
+nav.site-topbar
+  .wrap--width-full
+    .site-topbar__content
+      .site-topbar__left
+        = link_to "#",
+          class: "site-header__action js-nav-toggler"
+          = icon("hamburger")
+
+      .site-topbar__center
+        .flag
+          .flag__image
+            = image_tag "http://fakeimg.pl/30x30",
+              class: ""
+
+          .flag__body
+            .site-aside__header__title
+              = "#{dato.info.client} Kickoff"
+
+      .site-topbar__right

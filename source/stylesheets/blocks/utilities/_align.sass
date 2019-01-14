@@ -6,3 +6,9 @@
     .align--#{$direction}-on-#{$name}
       +at-breakpoint($name)
         text-align: #{$direction}
+
+.align--center-left
+  text-align: center
+
+  +at-breakpoint(desk)
+    text-align: left

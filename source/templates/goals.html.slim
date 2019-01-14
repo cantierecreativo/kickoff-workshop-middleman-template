@@ -1,0 +1,13 @@
+.wrap--width-full.wrap--double-gutter
+  h1.page-title Obiettivi
+
+  - dato.groups.values.each do |group|
+
+    - cards = dato.goals.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
+    - if cards.any?
+      h2.beta.space--top-3
+        = group.name
+
+      .board
+        - cards.each do |card|
+          = partial "partials/post-it", locals:{obj: card, show_hypotesy: true}

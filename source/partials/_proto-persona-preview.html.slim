@@ -1,0 +1,28 @@
+= link_to "/proto-personas/#{pp.slug}",
+  class: "label padding--2"
+    .grid
+      .grid__item.tab-5-12
+        figure
+          = image_tag pp.avatar.url(w: 300,
+              h: 300,
+              fit: "crop",
+              format: "pjpg"),
+              class: "object-fit"
+
+      .grid__item.tab-7-12
+        h3.gamma
+          = pp.full_name
+
+        .space--top-1
+          .inline--block.padding--right-1.padding--left-1.border
+            = pp.role.name
+
+        = partial "partials/proto-persona-basic-demographics",
+          locals: {pp: pp}
+
+    - if pp.other_demographic_info.present?
+      .space--top-1
+        strong.space--bottom-1
+          => "Altro:"
+
+        = pp.other_demographic_info

@@ -52,15 +52,31 @@ helpers do
   end
 end
 
-proxy "/_redirects", "/templates/redirects.txt"
+proxy "/_redirects",
+  "/templates/redirects.txt"
 
 dato.tap do |dato|
+  proxy "/index.html",
+    "/templates/homepage.html"
+
+  proxy "/recap/index.html",
+    "/templates/recap.html"
+
+  proxy "/personas/index.html",
+    "/templates/personas.html"
+
   proxy "/ipotesi/index.html",
     "/templates/hypothesis_index.html"
 
+  proxy "/obiettivi/index.html",
+    "/templates/goals.html"
+
+  proxy "/problemi/index.html",
+    "/templates/goals.html"
+
   dato.protopersonas.each do |proto|
     proxy "/proto-personas/#{proto.slug}/index.html",
-      '/templates/protopersona.html',
+      '/templates/proto-persona.html',
       locals: { persona: proto }
   end
 

@@ -2,7 +2,6 @@
   display: block
   position: relative
   border-radius: 5px
-  min-height: 380px
   overflow: hidden
 
   .no-touchevents &:hover
@@ -16,14 +15,12 @@
   background-blend-mode: multiply
   transition: all .5s $material-ease
 
-.card__front,
-.card__back
-  +center
-  +transition-ease
+.card__front
+  +padding(3)
+  position: relative
 
 .card__back
-  opacity: 0
-  visibility: hidden
+  display: none
 
 .card__number,
 .card__title,
@@ -32,9 +29,10 @@
   text-align: center
 
 .card__number
+  +position(absolute, 50% null null 20px)
+  transform: translateY(-50%)
   +light-heading-font-family
-  +font-size(alpha)
-  +margin-bottom(1)
+  +font-size(beta)
 
 .card__title
   +heading-font-family
@@ -45,11 +43,34 @@
 
 .card--reversible
   @extend .card
-  .no-touchevents &:hover
-    .card__front
-      opacity: 0
-      visibility: hidden
 
-    .card__back
-      opacity: 1
-      visibility: visible
++at-breakpoint(desk)
+  .card
+    min-height: 380px
+
+  .card__front,
+  .card__back
+    +padding(0)
+    +center
+    +transition-ease
+
+  .card__back
+    display: block
+    opacity: 0
+    visibility: hidden
+
+  .card__number
+    +position(relative, auto auto auto auto)
+    transform: none
+    +font-size(alpha)
+    +margin-bottom(1)
+
+  .card--reversible
+    .no-touchevents &:hover
+      .card__front
+        opacity: 0
+        visibility: hidden
+
+      .card__back
+        opacity: 1
+        visibility: visible

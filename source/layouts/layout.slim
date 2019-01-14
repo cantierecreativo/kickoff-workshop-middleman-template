@@ -3,11 +3,17 @@ html lang=I18n.locale
   head = partial "partials/head"
   body
     .canvas
+      .canvas__main
+        = partial "partials/site-topbar"
+
       aside.canvas__aside
         = partial "partials/site-aside"
 
       main.canvas__main
         = yield
+
+      .canvas__main
+        = partial "partials/site-footer"
 
     /.space--top-5 = partial "partials/footer"
     = partial "partials/js_includes"
