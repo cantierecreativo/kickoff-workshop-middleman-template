@@ -10,16 +10,6 @@ ul class=block_class
           = "Dashboard"
 
   li class="#{block_class}__item"
-    = link_to "/recap",
-      class: "#{block_class}__link"
-      .flag
-        .flag__image
-          = icon("home")
-
-        .flag__body
-          = "Recap"
-
-  li class="#{block_class}__item"
     = link_to "/ipotesi",
       class: "#{block_class}__link"
       .flag
@@ -40,21 +30,11 @@ ul class=block_class
           = "Personas"
 
   li class="#{block_class}__item"
-    = link_to "/obiettivi",
+    = link_to "/materiale",
       class: "#{block_class}__link"
       .flag
         .flag__image
-          = icon("home")
+          = icon("folder-open")
 
         .flag__body
-          = "Obiettivi"
-
-  li class="#{block_class}__item"
-    = link_to "/problemi",
-      class: "#{block_class}__link"
-      .flag
-        .flag__image
-          = icon("home")
-
-        .flag__body
-          = "Problemi"
+          = "Materiale"

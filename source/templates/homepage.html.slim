@@ -1,23 +1,59 @@
 .wrap--width-full.wrap--double-gutter
-  .grid--narrow
-    .grid__item.desk-5-12
-      h1.page-title Incipit
-      .formatted-content
-        = dato.info.resume
+  .grid--wide
+    .grid__item.desk-8-12.wall-9-12
+      header.space--bottom-1
+        h1.page-title
+          = dato.info.client
 
-    .grid__item.desk-2-12
-    .grid__item.desk-5-12
-      h3.delta Realizzato il #{dato.info.date}
+      section.space--bottom-3
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Le tue ipotesi:"
 
-      .formatted-content
-        = dato.info.participants
+        .grid
+          - dato.hypotesies.sort_by(&:position)[0..3].each do |hyp|
+            .grid__item.desk-3-12
+              .space--bottom-2
+                = partial "partials/hypothesis-preview",
+                  locals: {hyp: hyp}
 
-      .space--top-3
-        h3.beta Stats:
+        .space--top-1.align--center
+          = link_to "Vedi tutte le ipotesi",
+            "/ipotesi/",
+            class: "color--green-dark underline"
+
+      section.space--bottom-3
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Tipologie di Persona:"
 
         ul
-          li = link_to "#{dato.goals.count} Obiettivi", "/goals"
-          li = link_to "#{dato.problems.count} Problemi", "/problems"
-          li = link_to  "#{dato.personas.count} Profili personas", "/roles"
-          li #{dato.protopersonas.count} Proto-personas
-          li = link_to "#{dato.hypotesies.count} Ipotesi", "/hypothesy"
+          - dato.personas.each do |persona|
+            li.display--inline-block.space--right-1.space--top-1
+              = partial "partials/persona-preview",
+                locals: {persona: persona}
+
+      section.space--bottom-2
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Le tue Persona:"
+
+      .grid
+        - dato.protopersonas[0..3].each do |pp|
+          .grid__item.lap-6-12.desk-4-12.wall-3-12
+            .space--bottom-2
+              = partial "partials/proto-persona-preview",
+              locals: {pp: pp}
+
+      .space--top-1.align--center
+        = link_to "Vedi tutte le persona",
+          "/personas/",
+          class: "color--green-dark underline"
+
+    .grid__item.desk-4-12.wall-3-12
+      .space--both-3
+        - dato.info.home_blocks.each do |block|
+          .space--bottom-2
+            .padding--2.border.border-radius--5.align--center
+              h3.gamma.space--bottom-1
+                = block.title
+
+              .smallprint.formatted-content
+                = block.text

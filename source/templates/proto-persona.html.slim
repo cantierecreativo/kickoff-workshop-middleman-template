@@ -1,7 +1,80 @@
 .wrap--width-full.wrap--double-gutter
-  h1.page__title.space--both-3 Proto-persona
+  .padding--both-2
+    .grid
+      .grid__item.desk-6-12
+        header.space--bottom-2
+          .padding--2.border
+            .grid
+              .grid__item.tab-5-12
+                .space--bottom-1
+                  figure.object-fit.border-radius--5
+                    = image_tag pp.avatar.url(w: 500,
+                        h: 500,
+                        fit: "facearea",
+                        facepad: "4",
+                        format: "pjpg"),
+                        class: ""
 
-  .proto
+              .grid__item.tab-7-12
+                h1.gamma
+                  = pp.full_name
+
+                .space--top-1
+                  .display--inline-block.padding--right-1.padding--left-1.border
+                    = pp.role.name
+
+                = partial "partials/proto-persona-basic-demographics",
+                  locals: {pp: pp}
+
+            .space--top-1
+              strong.space--bottom-1
+                => "Altro:"
+
+              = pp.other_demographic_info
+
+      .grid__item.desk-6-12
+        section.padding--2.border.align--center
+          h2.gamma.space--bottom-1
+            = "Scenario:"
+
+          .formatted-content
+            = pp.scenario
+
+  section.space--bottom-3
+    h2.space--bottom-1.gamma.align--center-left-on-desk
+      = "Bisogni"
+
+    .align--center-left-on-desk
+      - pp.desires.each do |desire|
+        .display--inline-block.space--right-1.space--top-1
+          .label
+            .label__title
+              = desire.name
+
+      - pp.needs.each do |need|
+        .display--inline-block.space--right-1.space--top-1
+          .label
+            .label__title
+              = need.name
+
+      - pp.problems.each do |problem|
+        .display--inline-block.space--right-1.space--top-1
+          .label
+            .label__title
+              = problem.name
+
+  section.space--bottom-3
+    h2.space--bottom-1.gamma.align--center-left-on-desk
+      = "#{pp.full_name} compare in queste ipotesi:"
+
+    .grid
+      - dato.hypotesies.select{|a| a.personas.include?(pp.role)}.sort_by(&:position).each do |hyp|
+        .grid__item.desk-3-12
+          .space--bottom-2
+            = partial "partials/hypothesis-preview",
+              locals: {hyp: hyp}
+
+  /.proto
     .grid
       .grid__item.width-5-12
 
@@ -24,7 +97,6 @@
             ul
               - hyps.each do |h|
                 li = link_to h.name, "/hypothesis/#{h.id}"
-
 
     .grid.space--top-3
       .grid__item.width-4-12

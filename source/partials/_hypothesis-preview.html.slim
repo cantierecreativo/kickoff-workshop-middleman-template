@@ -1,8 +1,10 @@
-- html_class = hyp.abstract.present? ? "card--reversible" : "card"
+- show_preview ||= false
+- block_modifier ||= nil
+- html_class = hyp.abstract.present? && show_preview ? "card--reversible" : "card"
 - bg_image = hyp.cover.url(w: 500, h: 500, fit: "crop", fm: "pjpg")
 
 = link_to "/ipotesi/#{hyp.slug}",
-  class: html_class
+  class: "#{html_class} #{block_modifier}"
 
   .card__background style="background-image: url('#{bg_image}');"
   .card__front

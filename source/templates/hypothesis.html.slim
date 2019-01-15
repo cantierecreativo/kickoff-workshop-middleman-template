@@ -14,12 +14,12 @@ header.image-cover
 
 section.space--both-2
   .wrap--width-full.wrap--double-gutter
-    h2.space--bottom-1.gamma.align--center-left
+    h2.space--bottom-1.gamma.align--center-left-on-desk
       = "Noi crediamo che"
 
     .grid
       .grid__item.desk-3-12
-        h3.space--bottom-1.delta.align--center-left
+        h3.space--bottom-1.delta.align--center-left-on-desk
           = "Otterremo"
 
         ul
@@ -29,17 +29,17 @@ section.space--both-2
                 locals: {goal: goal}
 
       .grid__item.desk-3-12
-        h3.space--bottom-1.delta.align--center-left
+        h3.space--bottom-1.delta.align--center-left-on-desk
           = "Se"
 
         ul
           - hyp.personas.each do |persona|
             li.space--bottom-1
               = partial "partials/persona-preview",
-                locals: {persona_role: persona}
+                locals: {persona: persona}
 
       .grid__item.desk-3-12
-        h3.space--bottom-1.delta.align--center-left
+        h3.space--bottom-1.delta.align--center-left-on-desk
           = "Soddisfa"
 
         ul
@@ -49,7 +49,7 @@ section.space--both-2
                 locals: {outcome: outcome}
 
       .grid__item.desk-3-12
-        h3.space--bottom-1.delta.align--center-left
+        h3.space--bottom-1.delta.align--center-left-on-desk
           = "Tramite"
 
         ul
@@ -60,7 +60,7 @@ section.space--both-2
 
 section.space--both-2
   .wrap--width-full.wrap--double-gutter
-    h2.space--bottom-1.gamma.align--center-left KPI
+    h2.space--bottom-1.gamma.align--center-left-on-desk KPI
     .board
       .formatted-content
         = hyp.kpi

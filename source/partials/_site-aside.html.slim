@@ -1,22 +1,16 @@
 nav.site-aside
   section.site-aside__top
     header.site-aside__header
-      .flag.space--bottom-2
-        .flag__image
-          = image_tag "http://fakeimg.pl/30x30",
-            class: ""
+      .space--bottom-2
+        = partial "partials/site-logo"
 
-        .flag__body
-          .site-aside__header__title
-            = "#{dato.info.client} Kickoff"
-
-      = "Benvenuto,<br> Marco."
+      = "Benvenuto!"
 
     = partial "partials/main-nav",
       locals: {block_class: "vertical-nav"}
 
   section.site-aside__bottom
-    .padding--2.border.border-radius.align--center
+    .padding--2.border.border-radius--10.align--center
       figure.space--bottom-1
         = image_tag "http://fakeimg.pl/50x50",
           class: "border-radius--circle"

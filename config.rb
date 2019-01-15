@@ -59,7 +59,7 @@ dato.tap do |dato|
   proxy "/index.html",
     "/templates/homepage.html"
 
-  proxy "/recap/index.html",
+  proxy "/materiale/index.html",
     "/templates/recap.html"
 
   proxy "/personas/index.html",
@@ -68,16 +68,11 @@ dato.tap do |dato|
   proxy "/ipotesi/index.html",
     "/templates/hypothesis_index.html"
 
-  proxy "/obiettivi/index.html",
-    "/templates/goals.html"
 
-  proxy "/problemi/index.html",
-    "/templates/goals.html"
-
-  dato.protopersonas.each do |proto|
-    proxy "/proto-personas/#{proto.slug}/index.html",
+  dato.protopersonas.each do |pp|
+    proxy "/proto-personas/#{pp.slug}/index.html",
       '/templates/proto-persona.html',
-      locals: { persona: proto }
+      locals: { pp: pp }
   end
 
   dato.hypotesies.each do |hyp|

@@ -7,8 +7,14 @@
       +at-breakpoint($name)
         text-align: #{$direction}
 
-.align--center-left
+.align--center-left-on-lap,
+.align--center-left-on-desk
   text-align: center
 
-  +at-breakpoint(desk)
++at-breakpoint(lap)
+  .align--center-left-on-lap
+    text-align: left
+
++at-breakpoint(desk)
+  .align--center-left-on-desk
     text-align: left

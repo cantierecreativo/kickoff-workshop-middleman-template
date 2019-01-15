@@ -1,8 +1,49 @@
 .wrap--width-full.wrap--double-gutter
-
   h1.page-title Recap obiettivi e problemi
 
-  - dato.groups.values.each do |group|
+  nav.space--bottom-3
+    ul.align--center-left-on-desk
+      li.display--inline-block.space--right-1.space--top-1
+        = link_to "#goals",
+          class: "label"
+          .label__title
+            = "Obiettivi"
+
+      li.display--inline-block.space--right-1.space--top-1
+        = link_to "#problems",
+          class: "label"
+          .label__title
+            = "Problemi"
+
+  section#goals.space--bottom-3
+    h2.space--bottom-1.gamma.align--center-left-on-desk
+      = "Obiettivi"
+
+    - dato.groups.each do |group|
+      h3.delta.align--center-left-on-desk
+        = group.name
+
+      ul.space--bottom-2
+        - dato.goals.select{|goal| goal.group == group }.each do |goal|
+          li.display--inline-block.space--right-1.space--top-1
+            = partial "partials/goal-preview",
+              locals: {goal: goal}
+
+  section#problems.space--bottom-3
+    h2.space--bottom-1.gamma.align--center-left-on-desk
+      = "Problemi"
+
+      - dato.groups.each do |group|
+        h3.delta.align--center-left-on-desk
+          = group.name
+
+        ul.space--bottom-2
+          - dato.problems.select{|problem| problem.group == group}.each do |problem|
+            .display--inline-block.space--right-1.space--top-1
+              = partial "partials/problem-preview",
+                locals: {problem: problem}
+
+  //- dato.groups.values.each do |group|
 
     - problems    = dato.problems.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
     - goals       = dato.goals.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse

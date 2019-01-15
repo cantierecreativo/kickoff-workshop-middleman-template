@@ -46,7 +46,7 @@
 
 +at-breakpoint(desk)
   .card
-    min-height: 380px
+    min-height: 220px
 
   .card__front,
   .card__back
@@ -63,7 +63,9 @@
     +position(relative, auto auto auto auto)
     transform: none
     +font-size(alpha)
-    +margin-bottom(1)
+
+  .card--tall
+    min-height: 380px
 
   .card--reversible
     .no-touchevents &:hover

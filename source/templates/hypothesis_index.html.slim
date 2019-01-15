@@ -1,12 +1,16 @@
 .wrap--width-full.wrap--double-gutter
-  h1.page-title= "Ipotesi"
+  header
+    h1.page-title= "Ipotesi"
 
-  .grid
-    - dato.hypotesies.sort_by(&:position).each do |hyp|
-      .grid__item.lap-6-12.desk-4-12.wall-3-12
-        .space--bottom-2
-          = partial "partials/hypothesis-preview",
-            locals: {hyp: hyp}
+  section
+    .grid
+      - dato.hypotesies.sort_by(&:position).each do |hyp|
+        .grid__item.lap-6-12.desk-4-12.wall-3-12
+          .space--bottom-2
+            = partial "partials/hypothesis-preview",
+              locals: {hyp: hyp,
+                block_modifier: "card--tall",
+                show_preview: true}
 
 /table.table.hypotesy
   thead
