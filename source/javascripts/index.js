@@ -25,7 +25,7 @@ $(document).ready(function(){
     }
 
     var popper = new Popper(tooltip,popup,{
-      placement: 'right',
+      placement: 'auto',
       modifiers: {
         flip: {
           behavior: ['left', 'right', 'top','bottom']
