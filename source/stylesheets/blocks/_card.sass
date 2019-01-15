@@ -10,9 +10,9 @@
 
 .card__background
   +position(absolute, 0 0 0 0)
-  background-color: $green-color
+  background-color: $black-color
   background-size: cover
-  background-blend-mode: multiply
+  background-blend-mode: soft-light
   transition: all .5s $material-ease
 
 .card__front
@@ -41,8 +41,29 @@
 .card__text
   font-style: italic
 
-.card--reversible
-  @extend .card
+.card--reversible,
+.card--tall,
+.card--blue,
+.card--gray,
+.card--green,
+.card--yellow,
+.card--orange
+  @extend .card !optional
+
+.card--blue .card__background
+  background-color: darken($blue-color, 30%)
+
+.card--gray .card__background
+  background-color: darken($gray-color, 30%)
+
+.card--green .card__background
+  background-color: darken($green-color, 30%)
+
+.card--yellow .card__background
+  background-color: darken($yellow-color, 30%)
+
+.card--orange .card__background
+  background-color: darken($orange-color, 30%)
 
 +at-breakpoint(desk)
   .card

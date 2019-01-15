@@ -16,7 +16,7 @@
             = "Problemi"
 
   section#goals.space--bottom-3
-    h2.space--bottom-1.gamma.align--center-left-on-desk
+    h2.space--bottom-1.beta.align--center-left-on-desk
       = "Obiettivi"
 
     - dato.groups.each do |group|
@@ -29,8 +29,10 @@
             = partial "partials/goal-preview",
               locals: {goal: goal}
 
-  section#problems.space--bottom-3
-    h2.space--bottom-1.gamma.align--center-left-on-desk
+hr
+.wrap--width-full.wrap--double-gutter
+  section#problems.space--both-3
+    h2.space--bottom-1.beta.align--center-left-on-desk
       = "Problemi"
 
       - dato.groups.each do |group|

@@ -11,15 +11,14 @@
         class: "js-tooltip-button display--block"
           = icon("info-circle")
 
-    .js-tooltip-content.hidden.background--white.border.border.radius.padding--2.box-shadow.width--200
-      .smallprint
-        - if solution.description.present?
-          .space--bottom-1
-            = solution.description
+    .js-tooltip-content.tooltip.is-hidden
+      - if solution.description.present?
+        .space--bottom-1
+          = solution.description
 
-        - if hyps.any?
-          .font-weight--bold
-            = "Ipotesi"
-          ul
-            - hyps.each do |hyp|
-              li= hyp.name
+      - if hyps.any?
+        .font-weight--bold
+          = "Ipotesi"
+        ul
+          - hyps.each do |hyp|
+            li= hyp.name

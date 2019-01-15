@@ -18,10 +18,10 @@ $(document).ready(function(){
     var ref = tooltip.querySelector('.js-tooltip-button');
 
     ref.onmouseover = function(e) {
-      popup.classList.remove('hidden');
+      popup.classList.remove('is-hidden');
     }
     ref.onmouseout = function(e) {
-      popup.classList.add ('hidden');
+      popup.classList.add ('is-hidden');
     }
 
     var popper = new Popper(tooltip,popup,{
