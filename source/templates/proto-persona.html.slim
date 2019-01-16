@@ -1,3 +1,5 @@
+- pp_hyps = dato.hypotesies.select{|a| a.personas.include?(pp.role)}
+
 - content_for(:head)
   == dato_meta_tags(pp)
 
@@ -66,13 +68,24 @@
             .label__title
               = problem.name
 
-  section.space--bottom-3
-    h2.space--bottom-1.gamma.align--center-left-on-desk
-      = "#{pp.full_name} compare in queste ipotesi:"
+  - if pp.attachments.any?
+    section.space--bottom-3
+      h2.space--bottom-1.gamma.align--center-left-on-desk
+        = "Documenti allegati"
 
-    .grid
-      - dato.hypotesies.select{|a| a.personas.include?(pp.role)}.sort_by(&:position).each do |hyp|
-        .grid__item.desk-3-12
-          .space--bottom-2
-            = partial "partials/hypothesis-preview",
-              locals: {hyp: hyp}
+      - pp.attachments.each do |page_attachment|
+        .display--inline-block.space--right-1.space--top-1
+          = partial "partials/#{page_attachment.item_type.api_key}",
+            locals: {resource: page_attachment}
+
+  - if pp_hyps.any?
+    section.space--bottom-3
+      h2.space--bottom-2.gamma.align--center-left-on-desk
+        = "#{pp.full_name} compare in queste ipotesi:"
+
+      .grid
+        - pp_hyps.sort_by(&:position).each do |hyp|
+          .grid__item.desk-3-12
+            .space--bottom-2
+              = partial "partials/hypothesis-preview",
+                locals: {hyp: hyp}

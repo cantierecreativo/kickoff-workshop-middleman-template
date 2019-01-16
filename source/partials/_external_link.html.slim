@@ -1,0 +1,9 @@
+= link_to resource.link_url,
+  class: "label",
+  target: "_blank",
+  title: "Apri #{resource.name}"
+  .label__title
+    = resource.name
+
+  .label__action
+    = icon("external-link")

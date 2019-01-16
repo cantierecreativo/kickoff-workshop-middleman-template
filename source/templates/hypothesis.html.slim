@@ -1,10 +1,12 @@
+- bg_image = hyp.cover.url(w: 1900, h: 800, fit: "crop", fm: "pjpg")
+- prev_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position - 1)}
+- next_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position + 1)}
+
 - content_for(:head)
   == dato_meta_tags(hyp)
 
-- bg_image = hyp.cover.url(w: 1900, h: 800, fit: "crop", fm: "pjpg")
-
 header.image-cover
-  .image-cover__background style="background-image: url('#{bg_image}');"
+  .image-cover__background style="background-image: url('#{bg_image}');" class="background--#{hyp.color}"
   .image-cover__heading
     .image-cover__number
       = hyp.position
@@ -61,28 +63,40 @@ section.space--both-2
               = partial "partials/solution-preview",
                 locals: {solution: solution}
 
-section.space--both-2
-  .wrap--width-full.wrap--double-gutter
-    h2.space--bottom-1.gamma.align--center-left-on-desk KPI
-    .board
+- if hyp.kpi.present?
+  section.space--both-2
+    .wrap--width-full.wrap--double-gutter
+      h2.space--bottom-1.gamma.align--center-left-on-desk KPI
       .formatted-content
         = hyp.kpi
 
-hr
-section.space--both-2
-  .wrap--width-full.wrap--double-gutter
-    - prev_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position - 1)}
-    - next_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position + 1)}
-    .or
-      .or__item
-        - if prev_hypothesis
-          = link_to "/ipotesi/#{prev_hypothesis.slug}"
-            => icon("angle-double-left")
-            = "Ipotesi #{prev_hypothesis.position}: #{prev_hypothesis.name}"
+- if hyp.attachments.any?
+  section.space--both-2
+    .wrap--width-full.wrap--double-gutter
+      h2.space--bottom-1.gamma.align--center-left-on-desk
+        = "Documenti allegati"
+
+      - hyp.attachments.each do |page_attachment|
+        .display--inline-block.space--right-1.space--top-1
+          = partial "partials/#{page_attachment.item_type.api_key}",
+            locals: {resource: page_attachment}
+
+- if prev_hypothesis || next_hypothesis
+  hr
+  section.space--both-2
+    .wrap--width-full.wrap--double-gutter
+      - prev_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position - 1)}
+      - next_hypothesis = dato.hypotesies.find{|h| h.position == (hyp.position + 1)}
+      .or
+        .or__item
+          - if prev_hypothesis
+            = link_to "/ipotesi/#{prev_hypothesis.slug}"
+              => icon("angle-double-left")
+              = "Ipotesi #{prev_hypothesis.position}: #{prev_hypothesis.name}"
 
 
-      .or__item
-        - if next_hypothesis
-          = link_to "/ipotesi/#{next_hypothesis.slug}"
-            = "Ipotesi #{next_hypothesis.position}: #{next_hypothesis.name}"
-            =< icon("angle-double-right")
+        .or__item
+          - if next_hypothesis
+            = link_to "/ipotesi/#{next_hypothesis.slug}"
+              = "Ipotesi #{next_hypothesis.position}: #{next_hypothesis.name}"
+              =< icon("angle-double-right")

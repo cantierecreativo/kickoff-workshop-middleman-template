@@ -19,6 +19,13 @@
           .label__title
             = "Problemi"
 
+      - if page.attachments.any?
+        li.display--inline-block.space--right-1.space--top-1
+          = link_to "#attachments",
+            class: "label"
+            .label__title
+              = "Documenti"
+
   section#goals.space--bottom-3
     h2.space--bottom-1.beta.align--center-left-on-desk
       = "Obiettivi"
@@ -52,3 +59,16 @@ hr
                 .space--bottom-1
                   = partial "partials/problem-preview",
                     locals: {problem: problem}
+
+
+- if page.attachments.any?
+  hr
+  section#attachments.space--both-3
+    .wrap--width-full.wrap--double-gutter
+      h2.space--bottom-1.beta.align--center-left-on-desk
+        = "Documenti allegati"
+
+      - page.attachments.each do |page_attachment|
+        .display--inline-block.space--right-1.space--top-1
+          = partial "partials/#{page_attachment.item_type.api_key}",
+            locals: {resource: page_attachment}
