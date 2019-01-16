@@ -1,6 +1,6 @@
 {
   "name": "middleman-template",
-  "version": "1.0.0",
+  "version": "1.13.0",
   "private": true,
   "description": "Another Middleman website",
   "main": "index.js",
@@ -33,6 +33,7 @@
     "webpack-modernizr-loader": "4.0.0"
   },
   "dependencies": {
+    "isotope": "^1.0.0-alpha.3",
     "popper.js": "^1.14.6"
   }
 }
