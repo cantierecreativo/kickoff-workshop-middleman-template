@@ -31,8 +31,9 @@
         .grid
           - dato.goals.select{|goal| goal.group == group }.each do |goal|
             .grid__item.lap-6-12.desk-4-12.wall-3-12
-              = partial "partials/goal-preview",
-                locals: {goal: goal}
+              .space--bottom-1
+                = partial "partials/goal-preview",
+                  locals: {goal: goal}
 
 hr
 .wrap--width-full.wrap--double-gutter
