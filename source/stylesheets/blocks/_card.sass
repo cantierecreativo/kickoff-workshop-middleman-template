@@ -1,19 +1,19 @@
 .card
   display: block
   position: relative
-  border-radius: 5px
+  border-radius: 4px
   overflow: hidden
+  +transition-ease
 
   .no-touchevents &:hover
-    .card__background
-      transform: scale(1.2)
+    box-shadow: 0 0 39px 0 rgba(#000000,0.62)
+    transform: scale(1.05)
 
 .card__background
   +position(absolute, 0 0 0 0)
   background-color: $black-color
   background-size: cover
   background-blend-mode: soft-light
-  transition: all .5s $material-ease
 
 .card__front
   +padding(3)

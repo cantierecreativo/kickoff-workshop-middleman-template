@@ -1,6 +1,10 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
 .wrap--width-full.wrap--double-gutter
   header
-    h1.page-title= "Ipotesi"
+    h1.page-title
+      = page.title
 
   section
     .grid

@@ -1,12 +1,12 @@
 - show_details ||= false
 - align_class = show_details ? "align--center-left-on-lap" : "align--center"
 
-= link_to "/proto-personas/#{pp.slug}",
-  class: "display--block padding--2 border border-radius--5 box-shadow--hover transition--ease"
+= link_to "/#{dato.personas_page.slug}/#{pp.slug}",
+  class: "display--block padding--2 border-radius--4 box-shadow--hover transition--ease border--transparent-hover scale--hover"
     .grid
       .grid__item class="#{'desk-5-12' if show_details}"
         .space--bottom-1
-          figure.object-fit.border-radius--5
+          figure.object-fit.border-radius--4
             = image_tag pp.avatar.url(w: 500,
                 h: 500,
                 fit: "facearea",
@@ -20,7 +20,7 @@
             = pp.full_name
 
           .space--top-1
-            .display--inline-block.padding--right-1.padding--left-1.border
+            .display--inline-block.padding--1.border
               = pp.role.name
 
         - if show_details

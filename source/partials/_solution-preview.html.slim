@@ -7,9 +7,8 @@
 
   - if has_tooltip
     .label__action
-      = link_to "#",
-        class: "js-tooltip-button display--block"
-          = icon("info-circle")
+      .js-tooltip-button.display--block
+        = icon("info-circle")
 
     .js-tooltip-content.tooltip.is-hidden
       - if solution.description.present?

@@ -1,5 +1,9 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
 .wrap--width-full.wrap--double-gutter
-  h1.page-title Recap obiettivi e problemi
+  h1.page-title
+    = page.title
 
   nav.space--bottom-3
     ul.align--center-left-on-desk
@@ -20,14 +24,15 @@
       = "Obiettivi"
 
     - dato.groups.each do |group|
-      h3.delta.align--center-left-on-desk
+      h3.delta.align--center-left-on-desk.space--bottom-1
         = group.name
 
-      ul.space--bottom-2
-        - dato.goals.select{|goal| goal.group == group }.each do |goal|
-          li.display--inline-block.space--right-1.space--top-1
-            = partial "partials/goal-preview",
-              locals: {goal: goal}
+      .space--bottom-1
+        .grid
+          - dato.goals.select{|goal| goal.group == group }.each do |goal|
+            .grid__item.lap-6-12.desk-4-12.wall-3-12
+              = partial "partials/goal-preview",
+                locals: {goal: goal}
 
 hr
 .wrap--width-full.wrap--double-gutter
@@ -36,31 +41,13 @@ hr
       = "Problemi"
 
       - dato.groups.each do |group|
-        h3.delta.align--center-left-on-desk
+        h3.delta.align--center-left-on-desk.space--bottom-1
           = group.name
 
-        ul.space--bottom-2
-          - dato.problems.select{|problem| problem.group == group}.each do |problem|
-            .display--inline-block.space--right-1.space--top-1
-              = partial "partials/problem-preview",
-                locals: {problem: problem}
-
-  //- dato.groups.values.each do |group|
-
-    - problems    = dato.problems.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
-    - goals       = dato.goals.select{|a| a.group == group}.sort_by{ |a| a.rating ? a.rating : 0 }.reverse
-
-    h2.beta.space--top-3
-      = group.name
-
-    .grid
-      .grid__item.desk-6-12
-        h3.gamma.space-top-2 Obiettivi
-        .board
-          - goals.each do |card|
-            = partial "partials/post-it", locals:{obj: card, show_hypotesy: true}
-      .grid__item.desk-6-12
-        h3.gamma.space-top-2 Problemi
-        .board
-          - problems.each do |card|
-            = partial "partials/post-it", locals:{obj: card, show_hypotesy: true, color: "red"}
+        .space--bottom-1
+          .grid
+            - dato.problems.select{|problem| problem.group == group}.each do |problem|
+              .grid__item.lap-6-12.desk-4-12.wall-3-12
+                .space--bottom-1
+                  = partial "partials/problem-preview",
+                    locals: {problem: problem}

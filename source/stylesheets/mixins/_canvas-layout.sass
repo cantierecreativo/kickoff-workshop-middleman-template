@@ -3,20 +3,23 @@
     left: - $width - $grid-gutter
     width: $width + $grid-gutter
 
-    +at-breakpoint(wall)
-      left: 0
-      position: absolute
-
   .canvas
     &.is-shifted
       .canvas__aside,
       .canvas__main
         transform: translateX($width + $grid-gutter)
 
-        +at-breakpoint(wall)
+  +at-breakpoint(hd)
+    .canvas
+      &.is-shifted
+        .canvas__aside,
+        .canvas__main
           transform: none
 
-    +at-breakpoint(wall)
-      .canvas__main
-        transform: translateX(0)
-        margin-left: $width + $grid-gutter
+    .canvas__main
+      transform: translateX(0)
+      margin-left: $width + $grid-gutter
+
+    .canvas__aside
+      left: 0
+      position: absolute

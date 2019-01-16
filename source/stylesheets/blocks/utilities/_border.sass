@@ -1,2 +1,8 @@
 .border
   border: 1px solid $border-color
+
+.border--transparent-hover
+  @extend .border
+
+  .no-touchevents &:hover
+    border-color: transparent

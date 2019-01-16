@@ -11,6 +11,7 @@ $(document).ready(function(){
     $(".canvas").toggleClass("is-shifted");
   });
 
+  // Tooltips
   var tooltips = [].slice.call(document.querySelectorAll('.js-tooltip'));
 
   tooltips.forEach(function(tooltip) {

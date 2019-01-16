@@ -8,7 +8,8 @@
         text-align: #{$direction}
 
 .align--center-left-on-lap,
-.align--center-left-on-desk
+.align--center-left-on-desk,
+.align--center-right-on-desk
   text-align: center
 
 +at-breakpoint(lap)
@@ -18,3 +19,6 @@
 +at-breakpoint(desk)
   .align--center-left-on-desk
     text-align: left
+
+  .align--center-right-on-desk
+    text-align: right

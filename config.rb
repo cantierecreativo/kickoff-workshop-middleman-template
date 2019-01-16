@@ -57,26 +57,29 @@ proxy "/_redirects",
 
 dato.tap do |dato|
   proxy "/index.html",
-    "/templates/homepage.html"
+    "/templates/homepage.html",
+    locals: {page: dato.homepage}
 
-  proxy "/materiale/index.html",
-    "/templates/recap.html"
+  proxy "/#{dato.recap_page.slug}/index.html",
+    "/templates/recap.html",
+    locals: {page: dato.recap_page}
 
-  proxy "/personas/index.html",
-    "/templates/personas.html"
+  proxy "/#{dato.personas_page.slug}/index.html",
+    "/templates/personas.html",
+    locals: {page: dato.personas_page}
 
-  proxy "/ipotesi/index.html",
-    "/templates/hypothesis_index.html"
-
+  proxy "/#{dato.hypothesis_page.slug}/index.html",
+    "/templates/hypothesis_index.html",
+    locals: {page: dato.hypothesis_page}
 
   dato.protopersonas.each do |pp|
-    proxy "/proto-personas/#{pp.slug}/index.html",
+    proxy "/#{dato.personas_page.slug}/#{pp.slug}/index.html",
       '/templates/proto-persona.html',
       locals: { pp: pp }
   end
 
   dato.hypotesies.each do |hyp|
-    proxy "/ipotesi/#{hyp.slug}/index.html",
+    proxy "/#{dato.hypothesis_page.slug}/#{hyp.slug}/index.html",
       '/templates/hypothesis.html',
       locals: { hyp: hyp }
   end

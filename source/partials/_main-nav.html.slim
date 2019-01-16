@@ -10,7 +10,7 @@ ul class=block_class
           = "Dashboard"
 
   li class="#{block_class}__item"
-    = link_to "/ipotesi",
+    = link_to "/#{dato.hypothesis_page.slug}",
       class: "#{block_class}__link"
       .flag
         .flag__image
@@ -20,7 +20,7 @@ ul class=block_class
           = "Ipotesi"
 
   li class="#{block_class}__item"
-    = link_to "/personas",
+    = link_to "/#{dato.personas_page.slug}",
       class: "#{block_class}__link"
       .flag
         .flag__image
@@ -30,7 +30,7 @@ ul class=block_class
           = "Personas"
 
   li class="#{block_class}__item"
-    = link_to "/materiale",
+    = link_to "/#{dato.recap_page.slug}",
       class: "#{block_class}__link"
       .flag
         .flag__image

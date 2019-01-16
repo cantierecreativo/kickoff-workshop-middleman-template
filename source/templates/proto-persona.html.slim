@@ -1,13 +1,16 @@
+- content_for(:head)
+  == dato_meta_tags(pp)
+
 .wrap--width-full.wrap--double-gutter
   .padding--both-2
     .grid
       .grid__item.desk-6-12
         header.space--bottom-2
-          .padding--2.border
+          .padding--2.border.border-radius--4
             .grid
               .grid__item.tab-5-12
                 .space--bottom-1
-                  figure.object-fit.border-radius--5
+                  figure.object-fit.border-radius--4
                     = image_tag pp.avatar.url(w: 500,
                         h: 500,
                         fit: "facearea",
@@ -20,7 +23,7 @@
                   = pp.full_name
 
                 .space--top-1
-                  .display--inline-block.padding--right-1.padding--left-1.border
+                  .display--inline-block.padding--1.border
                     = pp.role.name
 
                 = partial "partials/proto-persona-basic-demographics",
@@ -33,7 +36,7 @@
               = pp.other_demographic_info
 
       .grid__item.desk-6-12
-        section.padding--2.border.align--center
+        section.padding--2.border.align--center.border-radius--4
           h2.gamma.space--bottom-1
             = "Scenario:"
 
@@ -73,59 +76,3 @@
           .space--bottom-2
             = partial "partials/hypothesis-preview",
               locals: {hyp: hyp}
-
-  /.proto
-    .grid
-      .grid__item.width-5-12
-
-        .proto__box
-          .milli.space--bottom-3 A cura di #{persona.author}
-
-          = image_tag persona.avatar.file.width(350).format('pjpg').to_url if persona.avatar.present?
-
-          h1.alpha = persona.full_name
-          = persona.role.name
-
-      .grid__item.width-7-12
-        .proto__box
-          .formatted-content
-            h3 Fattori demografici
-            = persona.demographic_info
-
-            h3 Ipotesi in cui è coinvolto
-            - hyps = dato.hypotesies.select{|a| a.personas.include?(persona.role)}
-            ul
-              - hyps.each do |h|
-                li = link_to h.name, "/hypothesis/#{h.id}"
-
-    .grid.space--top-3
-      .grid__item.width-4-12
-        .proto__box
-          .formatted-content
-            h3 Scenario
-            = persona.scenario
-
-        .formatted-content
-          h3 Desideri
-        .board
-          - persona.desires.each do |d|
-            .post-it
-              = d.name
-
-      .grid__item.width-4-12
-        .proto__box.formatted-content
-          h3 Bisogni
-
-        .board
-          - persona.needs.each do |n|
-            .post-it
-              = n.name
-
-      .grid__item.width-4-12
-        .proto__box.formatted-content
-          h3 Problemi
-
-        .board
-          - persona.problems.each do |p|
-            .post-it.post-it--red
-              = p.name

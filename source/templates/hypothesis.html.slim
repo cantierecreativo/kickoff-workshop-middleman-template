@@ -1,3 +1,6 @@
+- content_for(:head)
+  == dato_meta_tags(hyp)
+
 - bg_image = hyp.cover.url(w: 1900, h: 800, fit: "crop", fm: "pjpg")
 
 header.image-cover
@@ -74,7 +77,7 @@ section.space--both-2
       .or__item
         - if prev_hypothesis
           = link_to "/ipotesi/#{prev_hypothesis.slug}"
-            => "<<"
+            => icon("angle-double-left")
             = "Ipotesi #{prev_hypothesis.position}: #{prev_hypothesis.name}"
 
 
@@ -82,4 +85,4 @@ section.space--both-2
         - if next_hypothesis
           = link_to "/ipotesi/#{next_hypothesis.slug}"
             = "Ipotesi #{next_hypothesis.position}: #{next_hypothesis.name}"
-            =< ">>"
+            =< icon("angle-double-right")

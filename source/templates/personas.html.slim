@@ -1,6 +1,10 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
 .wrap--width-full.wrap--double-gutter
   heading
-    h1.page-title Personas
+    h1.page-title
+      = page.title
 
   section.space--bottom-3
     ul
@@ -10,39 +14,10 @@
             locals: {persona: persona}
 
   section.space--both-3
-    .grid
+    .grid.isotope-grid
       - dato.protopersonas.each do |pp|
-        .grid__item.lap-6-12
+        .grid__item.lap-6-12.desk-4-12
           .space--bottom-2
             = partial "partials/proto-persona-preview",
             locals: {pp: pp,
               show_details: true}
-
-  /.board
-    - dato.personas.each do |persona|
-        .post-it
-          .post-it__body
-            = persona.name
-            .smallprint
-              = persona.description
-
-              - hyps = dato.hypotesies.select{|a| a.personas.include?(persona)}
-              - protos = dato.protopersonas.select{|a| a.role == persona}
-
-              - if protos.any?
-                .formatted-content.space--top-2
-                  ul
-                    - protos.each do |p|
-                      li = link_to p.full_name, "/protopersona/#{p.id}"
-
-          .post-it__footer
-            .post-it__info
-              - if hyps.count > 0
-                .tooltip
-                  p #{hyps.count} ipotesi
-                  .tooltip__content
-                    ul
-                      - hyps.each do |h|
-                        li = h.name
-              - else
-                p Nessuna ipotesi

@@ -1,11 +1,9 @@
 .tooltip
+  max-width: 280px
   background-color: $white-color
-  border-radius: 5px
-  border: 1px solid $border-color
+  border-radius: 4px
   +padding(2)
-  box-shadow: 0px 0px 20px 5px rgba($gray-color, 0.2)
-  z-index-10
-  max-width: 200px
+  +box-shadow
   +transition-ease
   &.is-hidden
     opacity: 0

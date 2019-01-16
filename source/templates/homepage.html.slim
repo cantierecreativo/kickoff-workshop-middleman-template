@@ -1,9 +1,12 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
 .wrap--width-full.wrap--double-gutter
   .grid--wide
     .grid__item.desk-8-12.wall-9-12
       header.space--bottom-1
         h1.page-title
-          = dato.info.client
+          = page.title
 
       section.space--bottom-3
         h2.space--bottom-1.gamma.align--center-left-on-desk
@@ -49,11 +52,11 @@
 
     .grid__item.desk-4-12.wall-3-12
       .space--both-3
-        - dato.info.home_blocks.each do |block|
+        - page.content_blocks.each do |block|
           .space--bottom-2
-            .padding--2.border.border-radius--5.align--center
+            .padding--2.border.border-radius--4.align--center.background--white-hover
               h3.gamma.space--bottom-1
                 = block.title
 
-              .smallprint.formatted-content
+              .smallprint.formatted-content.color--light
                 = block.text
