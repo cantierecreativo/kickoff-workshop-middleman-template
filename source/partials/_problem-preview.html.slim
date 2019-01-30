@@ -1,4 +1,4 @@
-- hyps = dato.hypotesies.select{|a| a.outcomes.include?(problem)}
+- hyps = dato.hypotesies.select{|a| a.goals.include?(problem)}
 - has_tooltip = (hyps.any? || problem.description.present?) ? true : false
 
 .label class="#{'js-tooltip' if has_tooltip}"
