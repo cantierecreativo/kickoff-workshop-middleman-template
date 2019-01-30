@@ -1,6 +1,8 @@
 - content_for(:head)
   == dato_meta_tags(page)
 
+- other_goals = dato.goals.select{|goal| !goal.group.present? }
+
 .wrap--width-full.wrap--double-gutter
   h1.page-title
     = page.title
@@ -37,7 +39,19 @@
       .space--bottom-1
         .grid
           - dato.goals.select{|goal| goal.group == group }.each do |goal|
-            .grid__item.lap-6-12.desk-4-12.wall-3-12
+            .grid__item.lap-6-12.desk-3-12.wall-3-12
+              .space--bottom-1
+                = partial "partials/goal-preview",
+                  locals: {goal: goal}
+
+    - if other_goals.any?
+      h3.delta.align--center-left-on-desk.space--bottom-1
+        = "Altri"
+
+      .space--bottom-1
+        .grid
+          - other_goals.each do |goal|
+            .grid__item.lap-6-12.desk-3-12.wall-3-12
               .space--bottom-1
                 = partial "partials/goal-preview",
                   locals: {goal: goal}
@@ -55,7 +69,7 @@ hr
         .space--bottom-1
           .grid
             - dato.problems.select{|problem| problem.group == group}.each do |problem|
-              .grid__item.lap-6-12.desk-4-12.wall-3-12
+              .grid__item.lap-6-12.desk-3-12.wall-3-12
                 .space--bottom-1
                   = partial "partials/problem-preview",
                     locals: {problem: problem}
