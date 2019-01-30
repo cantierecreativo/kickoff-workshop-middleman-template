@@ -1,0 +1,22 @@
+.label
+  display: flex
+  width: 100%
+  justify-content: space-between
+  align-items: center
+  +padding(1)
+  border: 1px solid $border-color
+  +transition-ease
+  border-radius: 4px
+
+  .no-touchevents &:hover
+    background-color: $white-color
+    border-color: transparent
+    +box-shadow
+
+  &:not(a)
+    cursor: default
+
+.label__title
+
+.label__action
+  +margin-left(1)

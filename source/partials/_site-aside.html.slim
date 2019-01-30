@@ -1,0 +1,27 @@
+nav.site-aside
+  section.site-aside__top
+    header.site-aside__header
+      .space--bottom-2
+        = partial "partials/site-logo"
+
+      = "Benvenuto!"
+
+    = partial "partials/main-nav",
+      locals: {block_class: "vertical-nav"}
+
+  section.site-aside__bottom
+    .padding--2.border.border-radius--4.align--center
+      figure.space--bottom-1
+        = image_tag "amir.jpg",
+          class: "border-radius--circle width--50"
+
+      .space--bottom-1
+        = "Il tuo referente è"
+
+      .space--bottom-1.font-weight--bold
+        = "Amir"
+
+      .space-bottom-1.color--light
+        = "Boss of UX"
+        br
+        = "@ Cantiere Creativo"

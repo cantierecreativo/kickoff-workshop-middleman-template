@@ -1,0 +1,88 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
+- other_goals = dato.goals.select{|goal| !goal.group.present? }
+
+.wrap--width-full.wrap--double-gutter
+  h1.page-title
+    = page.title
+
+  nav.space--bottom-3
+    ul.align--center-left-on-desk
+      li.display--inline-block.space--right-1.space--top-1
+        = link_to "#goals",
+          class: "label"
+          .label__title
+            = "Obiettivi"
+
+      li.display--inline-block.space--right-1.space--top-1
+        = link_to "#problems",
+          class: "label"
+          .label__title
+            = "Problemi"
+
+      - if page.attachments.any?
+        li.display--inline-block.space--right-1.space--top-1
+          = link_to "#attachments",
+            class: "label"
+            .label__title
+              = "Documenti"
+
+  section#goals.space--bottom-3
+    h2.space--bottom-1.beta.align--center-left-on-desk
+      = "Obiettivi"
+
+    - dato.groups.each do |group|
+      h3.delta.align--center-left-on-desk.space--bottom-1
+        = group.name
+
+      .space--bottom-1
+        .grid
+          - dato.goals.select{|goal| goal.group == group }.each do |goal|
+            .grid__item.lap-6-12.desk-3-12.wall-3-12
+              .space--bottom-1
+                = partial "partials/goal-preview",
+                  locals: {goal: goal}
+
+    - if other_goals.any?
+      h3.delta.align--center-left-on-desk.space--bottom-1
+        = "Altri"
+
+      .space--bottom-1
+        .grid
+          - other_goals.each do |goal|
+            .grid__item.lap-6-12.desk-3-12.wall-3-12
+              .space--bottom-1
+                = partial "partials/goal-preview",
+                  locals: {goal: goal}
+
+hr
+.wrap--width-full.wrap--double-gutter
+  section#problems.space--both-3
+    h2.space--bottom-1.beta.align--center-left-on-desk
+      = "Problemi"
+
+      - dato.groups.each do |group|
+        h3.delta.align--center-left-on-desk.space--bottom-1
+          = group.name
+
+        .space--bottom-1
+          .grid
+            - dato.problems.select{|problem| problem.group == group}.each do |problem|
+              .grid__item.lap-6-12.desk-3-12.wall-3-12
+                .space--bottom-1
+                  = partial "partials/problem-preview",
+                    locals: {problem: problem}
+
+
+- if page.attachments.any?
+  hr
+  section#attachments.space--both-3
+    .wrap--width-full.wrap--double-gutter
+      h2.space--bottom-1.beta.align--center-left-on-desk
+        = "Documenti allegati"
+
+      - page.attachments.each do |page_attachment|
+        .display--inline-block.space--right-1.space--top-1
+          = partial "partials/#{page_attachment.item_type.api_key}",
+            locals: {resource: page_attachment}

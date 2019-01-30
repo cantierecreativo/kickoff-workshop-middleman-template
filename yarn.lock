@@ -2485,6 +2485,11 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
+jquery@^2:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+  integrity sha1-LInWiJterFIqfuoywUUhVZxsvwI=
+
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.2.tgz#1896da010ef8862f385d8887648e9b6dc4a7a2e9"
@@ -3329,6 +3334,11 @@ pkg-dir@^2.0.0:
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
   dependencies:
     find-up "^2.1.0"
+
+popper.js@^1.14.6:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.6.tgz#ab20dd4edf9288b8b3b6531c47c361107b60b4b0"
+  integrity sha512-AGwHGQBKumlk/MDfrSOf0JHhJCImdDMcGNoqKmKkU+68GFazv3CQ6q9r7Ja1sKDZmYWTckY/uLyEznheTDycnA==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

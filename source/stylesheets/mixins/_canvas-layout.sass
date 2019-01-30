@@ -1,10 +1,25 @@
-@mixin canvas-layout($width, $gutter: $grid-gutter)
+@mixin canvas-layout($width)
   .canvas__aside
-    left: - $width - $gutter
-    width: $width
+    left: - $width - $grid-gutter
+    width: $width + $grid-gutter
 
-  .canvas.is-shifted
-    .canvas__aside,
+  .canvas
+    &.is-shifted
+      .canvas__aside,
+      .canvas__main
+        transform: translateX($width + $grid-gutter)
+
+  +at-breakpoint(hd)
+    .canvas
+      &.is-shifted
+        .canvas__aside,
+        .canvas__main
+          transform: none
+
     .canvas__main
-      transform: translateX($width + $gutter)
+      transform: translateX(0)
+      margin-left: $width + $grid-gutter
 
+    .canvas__aside
+      left: 0
+      position: absolute

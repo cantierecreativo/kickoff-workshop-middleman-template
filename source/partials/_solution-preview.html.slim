@@ -1,0 +1,23 @@
+- hyps = dato.hypotesies.select{|a| a.solutions.include?(solution)}
+- has_tooltip = (hyps.any? || solution.description.present?) ? true : false
+
+.label class="#{'js-tooltip' if has_tooltip}"
+  .label__title
+    = solution.name
+
+  - if has_tooltip
+    .label__action
+      .js-tooltip-button.display--block
+        = icon("info-circle")
+
+    .js-tooltip-content.tooltip.is-hidden
+      - if solution.description.present?
+        .space--bottom-1
+          = solution.description
+
+      - if hyps.any?
+        .font-weight--bold
+          = "Ipotesi"
+        ul
+          - hyps.each do |hyp|
+            li= hyp.name

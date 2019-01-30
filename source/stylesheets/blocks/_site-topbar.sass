@@ -1,0 +1,18 @@
+.site-topbar
+
+.site-topbar__content
+  display: flex
+  justify-content: space-between
+  align-items: center
+  +vertical-padding(1)
+
+.site-topbar__center
+  text-align: center
+
+.site-topbar__left,
+.site-topbar__right
+  flex-basis: 50px
+
++at-breakpoint(wall)
+  .site-topbar
+    display: none

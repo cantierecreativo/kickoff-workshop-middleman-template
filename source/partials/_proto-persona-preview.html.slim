@@ -1,0 +1,42 @@
+- show_details ||= false
+- align_class = show_details ? "align--center-left-on-lap" : "align--center"
+
+= link_to "/#{dato.personas_page.slug}/#{pp.slug}",
+  class: "display--block padding--2 border-radius--4 box-shadow--hover transition--ease border--transparent-hover scale--hover"
+    .grid
+      .grid__item class="#{'desk-5-12' if show_details}"
+        .space--bottom-1
+          figure.object-fit.border-radius--4
+            = image_tag pp.avatar.url(w: 500,
+                h: 500,
+                fit: "facearea",
+                facepad: "4",
+                format: "pjpg"),
+                class: ""
+
+      .grid__item class="#{'desk-7-12' if show_details}"
+        div class=align_class
+          h3.gamma
+            = pp.full_name
+
+          .space--top-1
+            .display--inline-block.padding--1.border
+              = pp.role.name
+
+        - if show_details
+          .visible--on-lap
+            = partial "partials/proto-persona-basic-demographics",
+              locals: {pp: pp}
+
+    - if pp.other_demographic_info.present? && show_details
+      .visible--on-lap
+        .space--top-1
+          strong.space--bottom-1
+            => "Altro:"
+
+          = pp.other_demographic_info
+
+    - if show_details
+      .space--top-1.align--center
+        span.underline.color--green
+          = "Vai alla scheda"

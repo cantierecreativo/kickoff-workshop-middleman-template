@@ -1,0 +1,62 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
+.wrap--width-full.wrap--double-gutter
+  .grid--wide
+    .grid__item.desk-8-12.wall-9-12
+      header.space--bottom-1
+        h1.page-title
+          = page.title
+
+      section.space--bottom-3
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Le tue ipotesi:"
+
+        .grid
+          - dato.hypotesies.sort_by(&:position)[0..3].each do |hyp|
+            .grid__item.desk-3-12
+              .space--bottom-2
+                = partial "partials/hypothesis-preview",
+                  locals: {hyp: hyp}
+
+        .space--top-1.align--center
+          = link_to "Vedi tutte le ipotesi",
+            "/ipotesi/",
+            class: "color--green-dark underline"
+
+      section.space--bottom-3
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Tipologie di Persona:"
+
+        ul
+          - dato.personas.each do |persona|
+            li.display--inline-block.space--right-1.space--top-1
+              = partial "partials/persona-preview",
+                locals: {persona: persona}
+
+      section.space--bottom-2
+        h2.space--bottom-1.gamma.align--center-left-on-desk
+          = "Le tue Persona:"
+
+      .grid
+        - dato.protopersonas[0..3].each do |pp|
+          .grid__item.lap-6-12.desk-4-12.wall-3-12
+            .space--bottom-2
+              = partial "partials/proto-persona-preview",
+              locals: {pp: pp}
+
+      .space--top-1.align--center
+        = link_to "Vedi tutte le persona",
+          "/personas/",
+          class: "color--green-dark underline"
+
+    .grid__item.desk-4-12.wall-3-12
+      .space--both-3
+        - page.content_blocks.each do |block|
+          .space--bottom-2
+            .padding--2.border.border-radius--4.align--center.background--white-hover
+              h3.gamma.space--bottom-1
+                = block.title
+
+              .smallprint.formatted-content.color--light
+                = block.text

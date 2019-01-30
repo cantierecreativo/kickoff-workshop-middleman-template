@@ -1,0 +1,19 @@
+- show_preview ||= false
+- html_class = hyp.abstract.present? && show_preview ? "card--reversible" : "card"
+- block_modifier ||= nil
+- bg_image = hyp.cover.url(w: 500, h: 500, fit: "crop", fm: "pjpg")
+
+= link_to "/ipotesi/#{hyp.slug}",
+  class: "#{html_class} #{block_modifier}"
+
+  .card__background style="background-image: url('#{bg_image}');" class="background--#{hyp.color}"
+  .card__front
+    .card__number
+      = hyp.position
+
+    h2.card__title
+      = hyp.name
+
+  .card__back
+    .card__text
+      = truncate_words(hyp.abstract, lenght: 20)

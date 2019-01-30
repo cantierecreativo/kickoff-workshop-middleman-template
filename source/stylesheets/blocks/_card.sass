@@ -1,0 +1,79 @@
+.card
+  display: block
+  position: relative
+  border-radius: 4px
+  overflow: hidden
+  +transition-ease
+
+  .no-touchevents &:hover
+    box-shadow: 0 0 39px 0 rgba(#000000,0.62)
+    transform: scale(1.05)
+
+.card__background
+  +position(absolute, 0 0 0 0)
+  background-color: $black-color
+  background-size: cover
+  background-blend-mode: soft-light
+
+.card__front
+  +padding(3)
+  position: relative
+
+.card__back
+  display: none
+
+.card__number,
+.card__title,
+.card__text
+  color: $rev-body-color
+  text-align: center
+
+.card__number
+  +position(absolute, 50% null null 20px)
+  transform: translateY(-50%)
+  +light-heading-font-family
+  +font-size(beta)
+
+.card__title
+  +heading-font-family
+  +font-size(delta)
+
+.card__text
+  font-style: italic
+
+.card--reversible,
+.card--tall,
+  @extend .card !optional
+
++at-breakpoint(desk)
+  .card
+    min-height: 220px
+
+  .card__front,
+  .card__back
+    +padding(0)
+    +center
+    +transition-ease
+
+  .card__back
+    display: block
+    opacity: 0
+    visibility: hidden
+
+  .card__number
+    +position(relative, auto auto auto auto)
+    transform: none
+    +font-size(alpha)
+
+  .card--tall
+    min-height: 380px
+
+  .card--reversible
+    .no-touchevents &:hover
+      .card__front
+        opacity: 0
+        visibility: hidden
+
+      .card__back
+        opacity: 1
+        visibility: visible

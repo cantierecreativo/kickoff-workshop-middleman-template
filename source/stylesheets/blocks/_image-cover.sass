@@ -1,0 +1,39 @@
+.image-cover
+  position: relative
+
+.image-cover__background
+  +position(absolute, 0 0 0 0)
+  background-color: $black-color
+  background-size: cover
+  background-blend-mode: soft-light
+
+.image-cover__heading
+  position: relative
+  text-align: center
+  +horizontal-padding(2)
+  +vertical-padding(4)
+
+.image-cover__number,
+.image-cover__title
+  +heading-font-family
+  +font-size(beta)
+  color: $rev-body-color
+
+.image-cover__text
+  +margin-top(1)
+  color: $rev-body-color
+  font-style: italic
+
++at-breakpoint(desk)
+  .image-cover__heading
+    text-align: center
+    +padding(5)
+
+  .image-cover__number,
+  .image-cover__title
+    +light-heading-font-family
+    +font-size(alpha)
+
+  .image-cover__text
+    +margin-top(2)
+    +font-size(delta)

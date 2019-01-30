@@ -52,22 +52,35 @@ helpers do
   end
 end
 
-proxy "/_redirects", "/templates/redirects.txt"
-
+proxy "/_redirects",
+  "/templates/redirects.txt"
 
 dato.tap do |dato|
-  dato.protopersonas.each do |proto|
-    proxy(
-      "/protopersona/#{proto.id}/index.html",
-      '/templates/protopersona.html',
-      locals: { persona: proto }
-    )
+  proxy "/index.html",
+    "/templates/homepage.html",
+    locals: {page: dato.homepage}
+
+  proxy "/#{dato.recap_page.slug}/index.html",
+    "/templates/recap.html",
+    locals: {page: dato.recap_page}
+
+  proxy "/#{dato.personas_page.slug}/index.html",
+    "/templates/personas.html",
+    locals: {page: dato.personas_page}
+
+  proxy "/#{dato.hypothesis_page.slug}/index.html",
+    "/templates/hypothesis_index.html",
+    locals: {page: dato.hypothesis_page}
+
+  dato.protopersonas.each do |pp|
+    proxy "/#{dato.personas_page.slug}/#{pp.slug}/index.html",
+      '/templates/proto-persona.html',
+      locals: { pp: pp }
   end
+
   dato.hypotesies.each do |hyp|
-    proxy(
-      "/hypothesis/#{hyp.id}/index.html",
+    proxy "/#{dato.hypothesis_page.slug}/#{hyp.slug}/index.html",
       '/templates/hypothesis.html',
-      locals: { hypothesis: hyp }
-    )
+      locals: { hyp: hyp }
   end
 end

@@ -1,0 +1,23 @@
+- content_for(:head)
+  == dato_meta_tags(page)
+
+.wrap--width-full.wrap--double-gutter
+  heading
+    h1.page-title
+      = page.title
+
+  section.space--bottom-3
+    ul
+      - dato.personas.each do |persona|
+        li.display--inline-block.space--right-1.space--top-1
+          = partial "partials/persona-preview",
+            locals: {persona: persona}
+
+  section.space--both-3
+    .grid.isotope-grid
+      - dato.protopersonas.each do |pp|
+        .grid__item.lap-6-12.desk-4-12
+          .space--bottom-2
+            = partial "partials/proto-persona-preview",
+            locals: {pp: pp,
+              show_details: true}

@@ -1,0 +1,24 @@
+@each $direction in $align-directions
+  .align--#{$direction}
+    text-align: #{$direction}
+
+  @each $name in $align-breakpoints
+    .align--#{$direction}-on-#{$name}
+      +at-breakpoint($name)
+        text-align: #{$direction}
+
+.align--center-left-on-lap,
+.align--center-left-on-desk,
+.align--center-right-on-desk
+  text-align: center
+
++at-breakpoint(lap)
+  .align--center-left-on-lap
+    text-align: left
+
++at-breakpoint(desk)
+  .align--center-left-on-desk
+    text-align: left
+
+  .align--center-right-on-desk
+    text-align: right

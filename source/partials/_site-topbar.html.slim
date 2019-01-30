@@ -1,0 +1,12 @@
+nav.site-topbar
+  .wrap--width-full
+    .site-topbar__content
+      .site-topbar__left
+        = link_to "#",
+          class: "site-header__action js-nav-toggler"
+          = icon("hamburger")
+
+      .site-topbar__center
+        = partial "partials/site-logo"
+
+      .site-topbar__right
